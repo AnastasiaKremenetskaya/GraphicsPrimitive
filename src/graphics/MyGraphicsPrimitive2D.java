@@ -1,6 +1,5 @@
 package graphics;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
@@ -27,7 +26,8 @@ abstract class MyGraphicsPrimitive2D{
     /**
      * Отрисовывает графический примитив
      */
-    void draw(Graphics2D g2) {
+    public void draw(Graphics2D g2) {
+        assert shape != null;
         g2.draw(shape);
     }
 

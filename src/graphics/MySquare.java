@@ -27,6 +27,6 @@ public class MySquare extends MyRectangle {
      * @return периметр
      */
     protected double countSize() {
-        return super.rectangle.width + super.rectangle.height;
+        return super.rectangle.width * 4;
     }
 }

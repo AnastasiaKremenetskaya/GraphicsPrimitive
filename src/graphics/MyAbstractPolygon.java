@@ -1,6 +1,5 @@
 package graphics;
 
-import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ public abstract class MyAbstractPolygon extends MyAreaPrimitive2D {
 
     protected Path2D abstractPolygon = new Path2D.Double(); //абстрактный многоугольник
     protected ArrayList<Point2D.Double> vertexPool =  new <Point2D.Double>ArrayList();//вершины
-    protected double area; //площадь многоугольника
 
 
     public MyAbstractPolygon(ArrayList<Point2D.Double> vertices) {
@@ -70,35 +68,13 @@ public abstract class MyAbstractPolygon extends MyAreaPrimitive2D {
     }
 
     /**
-     * Отрисовывает графический примитив
-     *
-     * @param g2 - доска
-     */
-    @Override
-    public void draw(Graphics2D g2) {
-        assert super.shape != null;
-        g2.draw(super.shape);
-    }
-
-    /**
-     * Получить площадь
-     *
-     * @return площадь
-     */
-    @Override
-    public double getArea() {
-        return area;
-    }
-
-    /**
      * Вычислить площадь фигуры
      *
      * @return площадь фигуры
      */
+    @Override
     protected double countArea() {
         double area = 0;
-
-        assert vertexPool != null;
 
         for (int i = 0; i < this.vertexPool.size()-1; i++){
             area += vertexPool.get(i).x * vertexPool.get(i + 1).y+vertexPool.get(i).y * vertexPool.get(i + 1).x;

@@ -5,8 +5,8 @@ import java.awt.geom.Point2D;
 
 public class MyCircle extends MyAreaPrimitive2D{
 
-    private Point2D.Double center;
-    private double radius;
+    protected Point2D.Double center;
+    protected double radius;
 
     MyCircle(Point2D.Double center, double radius) {
         if (radius <= 0)
@@ -14,19 +14,18 @@ public class MyCircle extends MyAreaPrimitive2D{
 
         this.center = center;
         this.radius = radius;
+
+        //Получить площадь
+        area = countArea();
     }
 
-    @Override
-    void draw(Graphics2D g2) {
-        g2.fillOval((int)Math.round(center.x), (int)Math.round(center.y), (int)Math.round(radius), (int)Math.round(radius));
-    }
     /**
      * Вычислить площадь фигуры
      *
      * @return площадь фигуры
      */
     @Override
-    public double getArea() {
+    protected double countArea() {
         return Math.PI * this.radius * this.radius;
     }
 
@@ -59,5 +58,15 @@ public class MyCircle extends MyAreaPrimitive2D{
             System.out.println("Point doesn't intersect circlet");
 
         return success;
+    }
+
+    /**
+     * Нарисовать круг
+     *
+     * @param g2
+     */
+    @Override
+    public void draw(Graphics2D g2) {
+        g2.fillOval((int)Math.round(center.x), (int)Math.round(center.y), (int)Math.round(radius), (int)Math.round(radius));
     }
 }
